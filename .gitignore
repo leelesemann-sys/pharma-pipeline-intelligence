@@ -1,0 +1,52 @@
+# ── Secrets & Credentials ──
+.env
+.env.local
+.env.production
+!.env.example
+secrets.toml
+.streamlit/secrets.toml
+
+# ── Python ──
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ── ML Artifacts ──
+mlruns/
+models/*.joblib
+artifacts/
+*.joblib
+
+# ── Data files ──
+orange_book_data/
+orange_book.zip
+*.csv
+*.xlsx
+*.zip
+nul
+
+# ── IDE ──
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── OS ──
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Logs ──
+logs/
+*.log
+
+# ── Claude/AI internal ──
+CLAUDE_PROJECT_INFO.md
+plan.md
+
+# ── Misc ──
+pharma_pipeline/
