@@ -5,6 +5,7 @@ Computes the effective Loss of Exclusivity date for each drug.
 
 import pyodbc
 
+import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from db_config import CONN_STR
 
 

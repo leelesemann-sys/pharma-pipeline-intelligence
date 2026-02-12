@@ -4,6 +4,7 @@ Phase 2b - Step 2: Schema Migration for Orange Book / Purple Book tables
 
 import pyodbc
 
+import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from db_config import CONN_STR
 
 TABLES = [

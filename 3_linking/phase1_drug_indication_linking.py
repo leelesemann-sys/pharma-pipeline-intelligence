@@ -10,6 +10,7 @@ import time
 from datetime import datetime
 from collections import defaultdict
 
+import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from db_config import CONN_STR
 
 CHEMBL_BASE = "https://www.ebi.ac.uk/chembl/api/data"

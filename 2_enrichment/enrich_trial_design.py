@@ -14,6 +14,7 @@ import sys
 import os
 from datetime import datetime
 
+import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from db_config import CONN_STR
 
 API_BASE = "https://clinicaltrials.gov/api/v2/studies"

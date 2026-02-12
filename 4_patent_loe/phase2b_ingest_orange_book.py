@@ -8,6 +8,7 @@ import pyodbc
 import pandas as pd
 from datetime import datetime
 
+import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from db_config import CONN_STR
 
 DATA_DIR = "orange_book_data"

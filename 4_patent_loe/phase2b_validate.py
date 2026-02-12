@@ -4,6 +4,7 @@ Phase 2b - Step 6: Validation & Report Generation
 
 import pyodbc
 
+import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from db_config import CONN_STR
 
 

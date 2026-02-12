@@ -28,6 +28,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="repla
 # ─────────────────────────────────────────────────
 # Configuration
 # ─────────────────────────────────────────────────
+import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from db_config import CONN_STR
 
 UMLS_API_KEY = os.environ.get("UMLS_API_KEY", "SET_UMLS_API_KEY_ENV_VAR")

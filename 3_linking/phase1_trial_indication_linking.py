@@ -7,6 +7,7 @@ import json
 from datetime import datetime
 from collections import Counter
 
+import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from db_config import CONN_STR
 
 INDICATION_SYNONYMS = {
