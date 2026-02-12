@@ -218,6 +218,31 @@ python 1_ingestion/ingest_chembl_drugs.py
 
 ---
 
+## Literature References & Benchmarks
+
+This project's methodology, feature engineering, and evaluation strategy are grounded in published pharma ML research:
+
+### ML Benchmarks
+
+| Reference | Relevance to This Project |
+|-----------|--------------------------|
+| **Lo, Siah & Wong (2019)** — *Machine Learning in Clinical Trial Outcome Prediction.* Harvard Data Science Review. | Primary benchmark. 140+ features, Random Forest on public data. AUC 0.78 on Phase III to Approval. Our CV-AUC of 0.779-0.947 is consistent with their results using a similar public-data approach. |
+| **Wong, Siah & Lo (2019)** — *Estimation of Clinical Trial Success Rates and Related Parameters.* Biostatistics, 20(2), 273-286. | Published probability-of-success (PoS) tables by phase and therapeutic area — the standard benchmark for validating transition rate predictions. Used to calibrate our model outputs. |
+| **Hay, Thomas, Craighead, Economides & Rosenthal (2014)** — *Clinical Development Success Rates for Investigational Drugs.* Nature Biotechnology, 32(1), 40-51. | Historical base rates: Phase 1 to 2 (~63%), Phase 2 to 3 (~31%), Phase 3 to Approval (~58%). Used as sanity check for our dataset's transition rates and model predictions. |
+| **Thomas, Burns, Audette, Carroll, Dow-Hygelund & Hay (2016)** — *Clinical Development Success Rates 2006-2015.* BIO Industry Analysis. | Updated success rates with larger dataset. Confirms Phase 2 as the highest-risk transition. Informed our feature engineering focus on Phase 2 predictors. |
+| **DiMasi, Grabowski & Hansen (2016)** — *Innovation in the Pharmaceutical Industry: New Estimates of R&D Costs.* Journal of Health Economics, 47, 20-33. | R&D cost estimates ($2.6B per approved drug) that contextualize why predicting trial success has enormous economic value. |
+
+### Methodology References
+
+| Reference | How We Applied It |
+|-----------|-------------------|
+| **Drug-level temporal splitting** (Lo et al. 2019) | We use GroupKFold with drug-level groups and temporal ordering — the same approach Lo et al. validated as essential for preventing data leakage in pharma prediction. |
+| **Point-in-time feature safety** (Lo et al. 2019) | All 60 features use strict temporal cutoffs. Features like "sponsor completion rate" use expanding windows up to (but not including) the prediction date. |
+| **Probability of Success calibration** (Wong et al. 2019) | Our predicted probabilities are compared against Wong et al.'s published PoS tables to verify calibration across therapeutic areas. |
+| **Base rate validation** (Hay et al. 2014) | Dataset transition rates are checked against Hay et al.'s published success rates to ensure our ClinicalTrials.gov dataset is representative. |
+
+---
+
 ## License
 
 This project is for portfolio and educational purposes.
