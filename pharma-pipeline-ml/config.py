@@ -4,7 +4,7 @@ import os
 # --- DB ---
 DB_CONN_STR = os.environ.get(
     "AZURE_SQL_CONN_STR",
-    "Driver={ODBC Driver 18 for SQL Server};"
+    "Driver={ODBC Driver 17 for SQL Server};"
     "Server=tcp:pharma-pipeline-sql.database.windows.net,1433;"
     "Database=pharma_pipeline_db;"
     "Uid=pharmaadmin;"
