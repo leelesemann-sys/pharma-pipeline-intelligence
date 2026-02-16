@@ -1,3 +1,1 @@
-unixodbc
-unixodbc-dev
-odbcinst
+freetds-dev
