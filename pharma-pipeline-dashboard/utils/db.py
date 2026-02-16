@@ -170,15 +170,27 @@ def get_connection():
 
 
 def _execute_with_retry(query, params=None):
-    """Execute a query with connection retry logic. Raises on failure."""
+    """Execute a query with connection retry logic. Raises on failure.
+
+    Uses cursor.execute() + cursor.description to build a DataFrame,
+    avoiding pd.read_sql() which triggers warnings and potential FreeTDS
+    crashes with raw pymssql connections.
+    """
     p = list(params) if isinstance(params, tuple) else params
     last_err = None
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             conn = get_connection()
+            cursor = conn.cursor()
             if p:
-                return pd.read_sql(query, conn, params=p)
-            return pd.read_sql(query, conn)
+                cursor.execute(query, p)
+            else:
+                cursor.execute(query)
+            if cursor.description is None:
+                return pd.DataFrame()
+            columns = [desc[0] for desc in cursor.description]
+            rows = cursor.fetchall()
+            return pd.DataFrame(rows, columns=columns)
         except ConnectionError:
             raise  # propagate — don't cache failures
         except Exception as e:
