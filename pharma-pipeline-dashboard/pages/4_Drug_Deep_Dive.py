@@ -162,6 +162,7 @@ with st.spinner("Loading drug details..."):
 # ─────────────────────────────────────────────
 # Drug Card
 # ─────────────────────────────────────────────
+drug_name = "Unknown"  # default in case detail query fails
 if not detail_df.empty:
     drug = detail_df.iloc[0]
     drug_name = drug.get("inn", "Unknown")
