@@ -1,5 +1,7 @@
 # Pharma Pipeline Intelligence
 
+> **Language:** English | [Deutsch](README.de.md)
+
 **Competitive intelligence platform for diabetes & obesity drug development — from raw clinical trial data to ML-powered success predictions.**
 
 Track 43 drugs across 32,800+ clinical trials, predict phase transition probabilities with XGBoost, and explore the competitive landscape through a 9-page interactive dashboard.
